@@ -74,6 +74,7 @@ highlight cursorline cterm=bold ctermbg=DarkGray
 "------------------------------------------------------------------------------------------------"
 set nowrap           " never (visually) wrap lines that are longer than the window.
 set sidescroll=5     " the horizontal scroll distance (min chars to jump).
+set textwidth=0      " disable text wrapping.
 
 "------------------------------------------------------------------------------------------------"
 " INDENTS
@@ -123,4 +124,46 @@ set mat=2            " how many tenths of a second to blink when matching bracke
 set background=dark
 colorscheme PaperColor
 
+"------------------------------------------------------------------------------------------------"
+" MAPPINGS     
+"------------------------------------------------------------------------------------------------"
+
+:let mapleader='`'    " prefix char prior to all my custom mappings.
+
+:nnoremap <leader>erc :edit $MYVIMRC<cr>            " erc = edit rc file.
+
+"------------------------------------------------------------------------------------------------"
+" ABBREVIATIONS - C/C++ source files
+"------------------------------------------------------------------------------------------------"
+
+" C/C++ source file header
+":abbrev __cpphead  
+" TODO need to learn more vim script to get this implemented. What I want is a header which can
+" be easily inserted which includes information obtained from functions such as the name of the 
+" file and the date in which the file was created and last edited. Apparantly the last edit date
+" can be updated each time you edit the file (see https://vim.fandom.com/wiki/Insert_current_date_or_time)
+" which would be good so should look into that too. Also see (https://vim.fandom.com/wiki/Get_the_name_of_the_current_file)
+" to get name of current file.
+"      \"------------------------------------------------------------------------------------------------"<cr>
+"      \                                                                                                "<cr>
+"      \ FILE: <C-R>=expand('%:t')<cr>                                                                  "<cr>
+"      \------------------------------------------------------------------------------------------------"<cr>
+
+" class body
+" TODO the last line could be cleaned up a bit; there must be a more efficient
+" key sequence to setup entering the class name.
+:abbrev __class 
+  \class NAME<cr>
+  \{<cr>
+  \public:<cr>
+  \private:<cr>
+  \};<cr>
+  \<esc>5k2eciw<BS>
+
+" function body
+:abbrev __func 
+  \RETVAL FUNCNAME()<cr>
+  \{<cr>
+  \}<cr>
+  \<esc>kkk
 
