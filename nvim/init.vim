@@ -36,8 +36,6 @@
 " - Create some color schemes for specific file types. The scheme I just
 "   whipped up looks aweful for vimscript but not too bad for C++.
 "
-" - Design a status line format. (see help status-line and help statusline)
-"
 "------------------------------------------------------------------------------------------------"
 
 "------------------------------------------------------------------------------------------------"
@@ -64,7 +62,7 @@ set number
 " GUIDE RULES
 "------------------------------------------------------------------------------------------------"
 set cursorline	     " draws a horizontal line under your cursor.
-set colorcolumn=98   " draws a vertical line at the column number.
+set colorcolumn=80   " draws a vertical line at the column number. old:98
 
 highlight colorcolumn ctermbg=DarkGray
 highlight cursorline cterm=bold ctermbg=DarkGray
@@ -102,6 +100,11 @@ set so=10            " the line margin above/below in which scolling beings.
 
 set laststatus=2     " always show the status line.
 
+" status line design (see :help statusline).
+set statusline=FILE:\ %.30F\ %y     " full file path and file type.
+set statusline+=\ \ LINE:%l/%L/%p   " line number/total lines/percentage pos in file.
+set statusline+=\ \ COL:%c          " column number.
+
 "------------------------------------------------------------------------------------------------"
 " PERFORMACE
 "------------------------------------------------------------------------------------------------"
@@ -125,12 +128,41 @@ set background=dark
 colorscheme PaperColor
 
 "------------------------------------------------------------------------------------------------"
-" MAPPINGS     
+" MAPPINGS - general
 "------------------------------------------------------------------------------------------------"
 
 :let mapleader='`'    " prefix char prior to all my custom mappings.
 
-:nnoremap <leader>erc :edit $MYVIMRC<cr>            " erc = edit rc file.
+" erc = edit rc file.
+:nnoremap <leader>erc :split $MYVIMRC<cr>            
+
+" rrc = reload rc file.
+:nnoremap <leader>rrc :so $MYVIMRC<cr>
+
+" toggle relative numbers.
+:nnoremap <leader>rn :set relativenumber!<cr>
+
+" unload the active buffer.
+:nnoremap <leader>q :bdelete<cr>
+
+" save and then unload the active buffer.
+:nnoremap <leader>wq :w<cr>:bdelete<cr>
+
+" window navigation.
+:nnoremap <leader>h <C-w>h       " focus window on left
+:nnoremap <leader>j <C-w>j       " focus window below
+:nnoremap <leader>k <C-w>k       " focus window above
+:nnoremap <leader>l <C-w>l       " focus window on right
+
+"------------------------------------------------------------------------------------------------"
+" MAPPINGS - C/C++ source files
+"------------------------------------------------------------------------------------------------"
+
+" TODO
+" - add a conditional so these are only applied when editing c/c++ source
+"   files.
+
+
 
 "------------------------------------------------------------------------------------------------"
 " ABBREVIATIONS - C/C++ source files
@@ -148,6 +180,17 @@ colorscheme PaperColor
 "      \                                                                                                "<cr>
 "      \ FILE: <C-R>=expand('%:t')<cr>                                                                  "<cr>
 "      \------------------------------------------------------------------------------------------------"<cr>
+"
+" TODO
+" - add a conditional so these are only applied when editing c/c++ source
+"   files.
+
+" code region divider
+:abbr __div 
+  \"------------------------------------------------------------------------------------------------"<cr>
+  \"                                                                                                "<cr>
+  \"------------------------------------------------------------------------------------------------"<cr>
+  \<esc>2k<k0>2l<S-r>
 
 " class body
 " TODO the last line could be cleaned up a bit; there must be a more efficient
