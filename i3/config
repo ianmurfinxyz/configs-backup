@@ -137,7 +137,7 @@ bindsym $Win+m mode "move"
 bindsym $Win+Shift+Return exec termite
 
 # start a web browser
-bindsym $Win+Shift+b exec firefox
+bindsym $Win+Shift+b exec brave
 
 # start dmenu (a program launcher)
 #bindsym $Win+d exec --no-startup-id dmenu_run
@@ -204,6 +204,14 @@ bindsym $Win+$Alt+r restart
 
 # exit i3 (logs you out of your X session)
 bindsym $Win+$Alt+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+#----------------------------------------------------------------------------------------------------------------------#
+#                                                                                                                      #
+# Screenshots                                                                                                          #
+#                                                                                                                      #
+#----------------------------------------------------------------------------------------------------------------------#
+
+bindsym Print exec scrot 'capture-%Y-%m-%d-%s_$wx$h.jpg' -e 'mv $f ~/shots'
 
 #----------------------------------------------------------------------------------------------------------------------#
 #                                                                                                                      #

@@ -62,7 +62,7 @@ set number
 " GUIDE RULES
 "------------------------------------------------------------------------------------------------"
 set cursorline	     " draws a horizontal line under your cursor.
-set colorcolumn=80   " draws a vertical line at the column number. old:98
+set colorcolumn=98   " draws a vertical line at the column number. old:98
 
 highlight colorcolumn ctermbg=DarkGray
 highlight cursorline cterm=bold ctermbg=DarkGray
@@ -124,7 +124,7 @@ set mat=2            " how many tenths of a second to blink when matching bracke
 "------------------------------------------------------------------------------------------------"
 " COLOR SCHEMES
 "------------------------------------------------------------------------------------------------"
-set background=dark
+set background=light
 colorscheme PaperColor
 
 "------------------------------------------------------------------------------------------------"
@@ -147,6 +147,12 @@ colorscheme PaperColor
 
 " save and then unload the active buffer.
 :nnoremap <leader>wq :w<cr>:bdelete<cr>
+
+" faster scrolling
+:nnoremap <S-j> 10j
+:nnoremap <S-k> 10k
+:nnoremap <S-h> 10h
+:nnoremap <S-l> 10l
 
 " window navigation.
 :nnoremap <leader>h <C-w>h       " focus window on left
@@ -192,6 +198,14 @@ colorscheme PaperColor
   \"------------------------------------------------------------------------------------------------"<cr>
   \<esc>2k<k0>2l<S-r>
 
+" c/cpp code region divider
+:abbr __cdiv 
+  \//----------------------------------------------------------------------------------------------//<cr>
+  \//                                                                                              //<cr>
+  \//----------------------------------------------------------------------------------------------//<cr>
+  \<esc>2k<k0>2l<S-r>
+
+
 " class body
 " TODO the last line could be cleaned up a bit; there must be a more efficient
 " key sequence to setup entering the class name.
@@ -201,7 +215,7 @@ colorscheme PaperColor
   \public:<cr>
   \private:<cr>
   \};<cr>
-  \<esc>5k2eciw<BS>
+  \<esc>2k2xk2x3k2eciw<BS>
 
 " function body
 :abbrev __func 
