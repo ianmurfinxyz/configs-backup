@@ -24,10 +24,7 @@
 "                                                                                                "
 " FILE: ~/.config/nvim/init.vim - neovim config                                                  "
 " AUTHOR: merlin - Ian Murfin - github.com/ianmurfinxyz                                          "
-"                                                                                                "
-" CREATED: 01-01-2021                                                                            "
-" UPDATED: 01-01-2021                                                                            "
-"                                                                                                "
+"
 "------------------------------------------------------------------------------------------------"
 
 "------------------------------------------------------------------------------------------------"
@@ -49,6 +46,8 @@ call plug#begin(stdpath('data').'/plugged')
 
 Plug 'https://github.com/NLKNguyen/c-syntax.vim'
 Plug 'https://github.com/NLKNguyen/papercolor-theme'
+Plug 'https://github.com/pangloss/vim-javascript.git'
+Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -224,3 +223,10 @@ colorscheme PaperColor
   \}<cr>
   \<esc>kkk
 
+"------------------------------------------------------------------------------------------------"
+" ADD MOUSE SUPPORT
+"------------------------------------------------------------------------------------------------"
+
+" allows dragging borders of vim windows to resize, using mouse to scroll, and placing the cursor 
+" with a mouse click.
+set mouse=a

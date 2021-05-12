@@ -134,7 +134,7 @@ bindsym $Win+m mode "move"
 # All program launching is done with $Win+shift.
 
 # start a terminal
-bindsym $Win+Shift+Return exec termite
+bindsym $Win+Shift+Return exec alacritty
 
 # start a web browser
 bindsym $Win+Shift+b exec brave
@@ -211,7 +211,7 @@ bindsym $Win+$Alt+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut
 #                                                                                                                      #
 #----------------------------------------------------------------------------------------------------------------------#
 
-bindsym Print exec scrot 'capture-%Y-%m-%d-%s_$wx$h.jpg' -e 'mv $f ~/shots'
+bindsym Print exec scrot 'capture-%Y-%m-%d-%s_$wx$h.bmp' -e 'mv $f ~/shots'
 
 #----------------------------------------------------------------------------------------------------------------------#
 #                                                                                                                      #
